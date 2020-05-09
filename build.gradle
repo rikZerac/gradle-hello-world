@@ -1,14 +1,15 @@
-apply plugin: 'jetty'
-
-configurations {
-  provided
-}
-
-dependencies {
-  provided 'javax.servlet:servlet-api:2.4'
-  compile configurations.provided
+plugins {
+  id 'war'
+  id 'org.gretty' version '2.2.0'
 }
 
 repositories {
-  mavenCentral()
+  jcenter()
 }
+
+dependencies {
+  providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+  testCompile 'junit:junit:4.12'
+}
+
+
