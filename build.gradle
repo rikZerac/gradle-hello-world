@@ -3,6 +3,10 @@ plugins {
   id 'org.gretty' version '2.2.0'
 }
 
+gretty {
+  contextPath 'exerciseOne'
+}
+
 repositories {
   jcenter()
 }
