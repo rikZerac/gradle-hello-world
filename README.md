@@ -1,16 +1,16 @@
-#Gradle hello world
+# Gradle hello world
 
 Sample project to test and build a Java web app using a specific version of [Gradle](https://guides.gradle.org/building-java-web-applications/) 
 in [Jenkins in Docker](https://github.com/jenkinsci/docker/blob/master/README.md)
 
 The Java web app is made of one servlet exposing a `GET` ReST endpoint returning a *"hello, world"* message
 
-##Prerequisites
+## Prerequisites
 
 - **Access to [project repository](https://github.com/rikZerac/gradle-hello-world)** 
 - **Docker** stable release installed
 
-##Contents
+## Contents
 
 The project is hosted on a [GitHub repository](https://github.com/rikZerac/gradle-hello-world) and contains:
 
@@ -25,7 +25,7 @@ to automate test and build execution in a *Multibranch Pipeline* job on a Jenkin
 
 - a `Dockerfile` with the recipe to build an image of a Jenkins master on an *Alpine Linux OS* with Gradle installed under `PATH` for the `jenkins` user
 
-##Usage
+## Usage
 With a shell opened at the **root of the project**:
 
 1. **build a Docker image** using the provided `Dockerfile` and eventually choosing a global Gradle version for `jenkins` user
