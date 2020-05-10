@@ -17,14 +17,16 @@ pipeline{
         stage('Test'){
             steps {
                 script{
-                  shell 'gradle clean test'
+                    //switch to a project specific Gradle version
+                    shell 'gradle wrapper --gradle-version=4.10.3 '
+                    shell 'gradlew clean test'
                 }
             }
         }
         stage('Build'){
             steps {
                 script{
-                    shell 'gradle build'
+                    shell 'gradlew build'
                 }
             }
         }
