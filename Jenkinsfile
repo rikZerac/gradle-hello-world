@@ -11,28 +11,31 @@ Closure<Void> shell = {
     }
 }
 
+String workDir
+
 pipeline{
     agent any
     stages {
         stage('Test'){
             steps {
                 script{
+                    workDir = pwd()
                     //switch to a project specific Gradle version
-                    shell 'gradle wrapper --gradle-version=4.10.3 '
-                    shell 'gradlew clean test'
+                    shell "gradle wrapper --gradle-version=4.10.3"
+                    shell "${workDir}/gradlew clean test"
                 }
             }
         }
         stage('Build'){
             steps {
                 script{
-                    shell 'gradlew build'
+                    shell "${workDir}/gradlew build"
                 }
             }
         }
         stage('Deploy'){
             steps {
-                archiveArtifacts artifacts: 'build/libs/gradle-hello-world.war', fingerprint: true
+                archiveArtifacts artifacts: 'build/libs/*.war', fingerprint: true
             }
         }
     }
