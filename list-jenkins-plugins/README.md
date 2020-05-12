@@ -4,7 +4,7 @@ Tiny command to get the list of plugins installed in a Jenkins instance at a mom
 The list of plugins is printed on stdout in [plugins.txt][plugins-txt-link] format, so you can use it to create 
 a fresh Jenkins instance with that plugins set by [building a Jenkins Docker image][dockerfile-link].
 
-It gets the plugins list from the `pluginManager/api/xml` ReST endpoint, loading the `xml` response body
+It gets the plugins list from the `pluginManager/api/xml` ReST endpoint of Jenkins master, loading the `xml` response body
 into memory in chunks of configurable size to tackle huge plugins sets. Plugins are listed in alphabetical order so you can 
 point out for which plugins two instances differs(or the same instance over time) via common diffing tools(i.e. `git diff`)
 

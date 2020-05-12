@@ -1,13 +1,14 @@
 # Gradle hello world
 
-Sample project to test and build a Java web app using a specific version of [Gradle][gradle-link] 
+Sample project to test and build a Java web app using [Gradle][gradle-link] 
 in [Jenkins in Docker][jenkins-docker-link]
 
 The Java web app is made of one servlet exposing a `GET` ReST endpoint returning a *"hello, world"* message
 
 ## Prerequisites
  
-- **Docker** stable release installed
+- **Docker** stable release (version *19.03.8* is the one used to develop this project)
+- *(optional)* **Python 3** distribution (version 3.5+) with *Pip*
 
 ## Contents
 
@@ -59,9 +60,13 @@ With a shell opened at the **root of the project**:
 5. **run the created job** which execute `clean`, `test` and `build` gradle tasks through a *Gradle wrapper* which downloads a project specific Gradle
     version(*4.10.3*) if not present in the job workspace und use it to run the tasks. Test reports are visible by browsing
     `build/reports/tests/test/index.html` inside the job workspace. **The built app war is archived** (with job execution fingerprint) and thus can be downloaded 
-    from the build summary page  
- 
-6. hopefully do not find too many bugs =D
+    from the build summary page 
+
+6. Follow this [`README`][list-plugins-module-link] to get the list of the plugins installed in your new running Jenkins instance
+using the Python module included in this repository. By saving this formatted plugins list on a text file you recreate [`plugins.txt`][plugins-txt-link],
+through which the image was originally configured
+   
+7. hopefully do not find too many bugs =D
 
 [gradle-link]: https://guides.gradle.org/building-java-web-applications/
 [jenkins-docker-link]: https://github.com/jenkinsci/docker/blob/master/README.md
