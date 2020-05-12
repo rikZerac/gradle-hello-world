@@ -44,6 +44,7 @@ def main():
 def parse_xml_plugins_list(jenkins_base_url, chunk_size, auth):
     chunk_size = chunk_size * 1024
     xml_pull_parser = ET.XMLPullParser()
+    plugins = []
 
     with requests.get(
             "{jenkins_base_url}/{path}".format(jenkins_base_url=jenkins_base_url, path=JENKINS_PLUGIN_MANAGER_PATH),
@@ -56,10 +57,15 @@ def parse_xml_plugins_list(jenkins_base_url, chunk_size, auth):
                 xml_pull_parser.feed(chunk)
                 try:
                     for event, element in xml_pull_parser.read_events():
+                        """
+                        Rely on the fact that a plugin version is always 
+                        encountered after its short name in <plugin> tag children
+                        """
                         if TAGS["SHORT_NAME"] == element.tag:
-                            print(element.text, end="")
+                            plugin_line = element.text
                         elif TAGS["VERSION"] == element.tag:
-                            print(":" + element.text)
+                            plugins.append(plugin_line + ":" + element.text)
+                            plugin_line = ""
                 except ET.ParseError as parse_err:
                     print(
                         "Jenkins response is not in parsable XML format, "
@@ -67,6 +73,8 @@ def parse_xml_plugins_list(jenkins_base_url, chunk_size, auth):
                         .format(parse_err=parse_err)
                     )
                     return 1
+    for plugin in sorted(plugins):
+        print(plugin)
     return 0
 
 
