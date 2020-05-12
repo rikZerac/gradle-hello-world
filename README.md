@@ -6,13 +6,12 @@ in [Jenkins in Docker](https://github.com/jenkinsci/docker/blob/master/README.md
 The Java web app is made of one servlet exposing a `GET` ReST endpoint returning a *"hello, world"* message
 
 ## Prerequisites
-
-- **Access to [project repository](https://github.com/rikZerac/gradle-hello-world)** 
+ 
 - **Docker** stable release installed
 
 ## Contents
 
-The project is hosted on a [GitHub repository](https://github.com/rikZerac/gradle-hello-world) and contains:
+The project contains:
 
 - the [main](https://github.com/rikZerac/gradle-hello-world/tree/master/src/main/java/org/gradle/examples/web) 
 and [test](https://github.com/rikZerac/gradle-hello-world/tree/master/src/test/java/org/gradle/examples/web) sources of the Java web app.
@@ -24,6 +23,9 @@ The unit test is implemented with *JUnit* and *Mockito*
 to automate test and build execution in a *Multibranch Pipeline* job on a Jenkins agent
 
 - a `Dockerfile` with the recipe to build an image of a Jenkins master on an *Alpine Linux OS* with Gradle installed under `PATH` for the `jenkins` user
+
+- a `plugins.txt` file listing a reference set of plugins to be preinstalled when building the Jenkins master Docker image, 
+including declarative pipeline ones required to parse and execute the `Jenkinsfile`
 
 ## Usage
 With a shell opened at the **root of the project**:
@@ -46,8 +48,8 @@ With a shell opened at the **root of the project**:
 
     `<CONTAINER_ID>` is printed on shell stdout by the previous `docker run` command
 
-5. **login and follow the initial setup** steps proposed by Jenkins GUI, *installing the suggested set of plugins*. this includes the declarative pipeline 
-plugins required to parse and execute the `Jenkinsfile` of the project
+5. **login and follow the initial setup**: Choose *Select plugins to install* and select *None* tab and 
+click the install button(plugins are preinstalled in the Docker image). 
 
 6. **create a new *Multibranch Pipeline* job** by clicking on `New Item` entry on the left menu of Jenkins dashboard and setting 
 [https://github.com/rikZerac/gradle-hello-world.git](https://github.com/rikZerac/gradle-hello-world.git) as GitHub branch source
