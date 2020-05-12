@@ -50,8 +50,8 @@ With a shell opened at the **root of the project**:
 > and with **initial admin login and setup wizard disabled**. This is intended to have a recipe to provide preconfigured Jenkins instances
 > on the fly, deciding a custom set of plugins in a declarative way through a bare and versionable text file which acts as a 'shopping list'.
 > This approach is very comfortable for scenarios like spawning a Jenkins instance to develop and try a `Jenkinsfile` and provisioning 
-> ready torun new fresh instances or replicas on demand. **Of course in the case of a Jenkins instance used to streamline production CI/CD, 
-> it is required to secure it via the GUI (`Manage Jenkins`) or by removing initial set disabling in the `Dockerfile`**
+> ready to run new fresh instances or replicas on demand. **Of course in the case of a Jenkins instance used to streamline production CI/CD, 
+> it is required to secure it via the GUI (`Manage Jenkins`) or by removing initial setup wizard disabling in the `Dockerfile`**
 
 4. **create a new *Multibranch Pipeline* job** by clicking on `New Item` entry on the left menu of Jenkins dashboard and setting 
 [https://github.com/rikZerac/gradle-hello-world.git][github-link] as GitHub branch source

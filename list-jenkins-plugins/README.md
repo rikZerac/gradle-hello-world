@@ -5,8 +5,8 @@ The list of plugins is printed on stdout in [plugins.txt][plugins-txt-link] form
 a fresh Jenkins instance with that plugins set by [building a Jenkins Docker image][dockerfile-link].
 
 It gets the plugins list from the `pluginManager/api/xml` ReST endpoint, loading the `xml` response body
-into memory in chunks of configurable size to tackle huge plugins set. Plugins are listed in alphabetical order so you can 
-point out for which plugins two instances differs(or how the same instance over time) via common diffing tools(i.e. `git diff`)
+into memory in chunks of configurable size to tackle huge plugins sets. Plugins are listed in alphabetical order so you can 
+point out for which plugins two instances differs(or the same instance over time) via common diffing tools(i.e. `git diff`)
 
 ## Installation
 The implementation is a single *Python 3* module with a `setup.py` script to pack it via [`setuptools`][setuptools-link]. 
@@ -53,14 +53,19 @@ You can get the list of installed plugins on a local Jenkins instance exposed on
 ```
 .... 
 
-antisamy-markup-formatter:2.0
-workflow-multibranch:2.21
-subversion:2.13.1
+pipeline-model-definition:1.6.0
+pipeline-model-extensions:1.6.0
+pipeline-rest-api:2.13
+pipeline-stage-step:2.3
+pipeline-stage-tags-metadata:1.6.0
+pipeline-stage-view:2.13
+plain-credentials:1.7
+resource-disposer:0.14
+scm-api:2.6.3
 script-security:1.71
-pam-auth:1.6
-github:1.30.0
-credentials-binding:1.23
-docker-workflow:1.23
+ssh-credentials:1.18.1
+ssh-slaves:1.31.2
+structs:1.20
 
 .... 
 ```
