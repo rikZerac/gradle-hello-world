@@ -27,7 +27,7 @@ to automate test and build execution in a *Multibranch Pipeline* job on a Jenkin
 - a `plugins.txt` file listing a reference set of plugins to be preinstalled when building the Jenkins master Docker image, 
 including declarative pipeline ones required to parse and execute the `Jenkinsfile`
 
-- a simple [*Python 3* module][] to list plugins installed on a Jenkins instance via `http`
+- a simple [*Python 3* module][list-plugins-module-link] to list plugins installed on a Jenkins instance via `http`
 
 ## Usage
 With a shell opened at the **root of the project**:
