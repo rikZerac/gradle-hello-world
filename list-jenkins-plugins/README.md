@@ -5,7 +5,8 @@ The list of plugins is printed on stdout in [plugins.txt][plugins-txt-link] form
 a fresh Jenkins instance with that plugins set by [building a Jenkins Docker image][dockerfile-link].
 
 It gets the plugins list from the `pluginManager/api/xml` ReST endpoint, loading the `xml` response body
-into memory in chunks of configurable size to tackle huge plugins set.
+into memory in chunks of configurable size to tackle huge plugins set. Plugins are listed in alphabetical order so you can 
+point out for which plugins two instances differs(or how the same instance over time) via common diffing tools(i.e. `git diff`)
 
 ## Installation
 The implementation is a single *Python 3* module with a `setup.py` script to pack it via [`setuptools`][setuptools-link]. 
