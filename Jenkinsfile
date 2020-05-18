@@ -23,6 +23,7 @@ pipeline{
                     //switch to a project specific Gradle version
                     shell "gradle wrapper --gradle-version=4.10.3"
                     shell "${workDir}/gradlew clean test"
+                    junit 'build/test-results/**/*.xml'
                 }
             }
         }
